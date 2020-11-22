@@ -55,8 +55,8 @@ def main():
             ),
         )
     )
-    # sort places by height for overlapping perspective
-    sorted(tree_places, key=itemgetter(1))
+    # sort tree positions by height for overlapping perspective
+    tree_positions = sorted(tree_positions, key=itemgetter(1))
 
     # plant trees
     for position_x, position_y in tree_positions:
