@@ -2,7 +2,9 @@
 Xmas tree field.
 """
 
+import math
 import random
+from operator import itemgetter
 
 
 def main():
@@ -19,10 +21,14 @@ def main():
     ]
 
     # TODO:
-    # + do perspective (sort by height?)
+    # + colored trees
+    # + add more field designs (circle, diamond, random)
+    # + add more tree design
+    # + input fixed size as parameters
 
+    # empiric max number of trees for the sake of visibility
+    max_tree_for_field = math.ceil((width * height) ** (1 / 2) / 4)
     # get random number of trees at random places
-    max_tree_for_field = 3  # need to think on this number
     number_trees = random.randint(1, max_tree_for_field)
     tree_places = list(
         zip(
@@ -30,6 +36,8 @@ def main():
             random.sample(range(borders[2], height - borders[3]), number_trees),
         )
     )
+    # sort places by height for overlapping perspective
+    sorted(tree_places, key=itemgetter(1))
 
     # plant trees
     for place_x, place_y in tree_places:
