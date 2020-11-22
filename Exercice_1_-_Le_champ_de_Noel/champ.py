@@ -2,12 +2,15 @@
 Xmas tree field.
 """
 
+import random
+
 
 def main():
     """main"""
     # initialization
     width = 20
     height = 20
+    borders = [4, 4, 5, 1]  # to ensure tree inside field borders
     tree = ["^", "^ ^", "(o  )", "(o  o )", "U"]
     # create field with borders
     field = [
@@ -16,11 +19,21 @@ def main():
     ]
 
     # TODO:
-    # + get a single random place
-    # + place only tree trunks
     # + place trees wholy
     # + get several random places
     # + do perspective (sort by height?)
+
+    number_trees = 1
+    tree_places = list(
+        zip(
+            random.sample(range(borders[0], width - borders[1]), number_trees),
+            random.sample(range(borders[2], height - borders[3]), number_trees),
+        )
+    )
+
+    # plant trees
+    for place_x, place_y in tree_places:
+        field[place_y][place_x] = tree[-1]
 
     # show the world your Xmas tree field
     for line in field:
