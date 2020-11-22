@@ -17,14 +17,23 @@ import math
 import random
 from operator import itemgetter
 
+# minimum WIDTH and HEIGHT of 12 is adviced
+WIDTH = 20
+HEIGHT = 20
+X_LIMITS = (0, WIDTH - 1)
+Y_LIMITS = (0, HEIGHT - 1)
+PROTECTION_SPAWN_LEFT = 4
+PROTECTION_SPAWN_RIGHT = 4
+PROTECTION_SPAWN_TOP = 1
+PROTECTION_SPAWN_BOTTOM = 5
+MINIMUM_TREES = 1
+BORDER_CHAR = "#"
+EMPTY_CHAR = " "
+TREE_DESIGN = ["^", "^ ^", "(o  )", "(o  o )", "U"]
+
 
 def main():
-    """main"""
     # initialization
-    width = 20
-    height = 20
-    borders = [4, 4, 5, 1]  # to ensure tree inside field borders
-    tree = ["^", "^ ^", "(o  )", "(o  o )", "U"]
     # create field with borders
     field = [
         ["#" if (j in (0, width - 1) or i in (0, height - 1)) else " " for j in range(width)]
