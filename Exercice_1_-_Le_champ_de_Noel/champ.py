@@ -41,10 +41,8 @@ def main():
     ]
 
     # empiric max number of trees for the sake of visibility
-    max_tree_for_field = math.ceil((width * height) ** (1 / 2) / 4)
-    # get random number of trees at random places
-    number_trees = random.randint(1, max_tree_for_field)
-    tree_places = list(
+    # WIDTH and HEIGHT sizes contribute to the number of trees
+    max_tree_for_field = math.ceil((WIDTH * HEIGHT) ** (1 / 2) / 4)
     number_trees = random.randint(MINIMUM_TREES, max_tree_for_field)
     # list of coordinates as tuple (x, y) to plant trees
     tree_positions = list(
