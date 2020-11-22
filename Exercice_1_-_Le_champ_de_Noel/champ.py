@@ -40,12 +40,6 @@ def main():
         for i in range(HEIGHT)
     ]
 
-    # TODO:
-    # + colored trees
-    # + add more field designs (circle, diamond, random)
-    # + add more tree design
-    # + input fixed size as parameters
-
     # empiric max number of trees for the sake of visibility
     max_tree_for_field = math.ceil((width * height) ** (1 / 2) / 4)
     # get random number of trees at random places
