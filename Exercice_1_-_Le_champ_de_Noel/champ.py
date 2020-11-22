@@ -19,11 +19,11 @@ def main():
     ]
 
     # TODO:
-    # + place trees wholy
-    # + get several random places
     # + do perspective (sort by height?)
 
-    number_trees = 1
+    # get random number of trees at random places
+    max_tree_for_field = 3  # need to think on this number
+    number_trees = random.randint(1, max_tree_for_field)
     tree_places = list(
         zip(
             random.sample(range(borders[0], width - borders[1]), number_trees),
@@ -33,7 +33,11 @@ def main():
 
     # plant trees
     for place_x, place_y in tree_places:
-        field[place_y][place_x] = tree[-1]
+        field[place_y - 0][place_x - 0 : place_x + 1] = tree[-1]
+        field[place_y - 1][place_x - 3 : place_x + 4] = tree[-2]
+        field[place_y - 2][place_x - 2 : place_x + 3] = tree[-3]
+        field[place_y - 3][place_x - 1 : place_x + 2] = tree[-4]
+        field[place_y - 4][place_x - 0 : place_x + 1] = tree[-5]
 
     # show the world your Xmas tree field
     for line in field:
