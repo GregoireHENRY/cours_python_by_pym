@@ -1,5 +1,16 @@
+#!/usr/bin/env python3
 """
-Xmas tree field.
+Xmas field of trees.
+
+A short program that generates a field WIDTH a random numbers of pretty trees, just like this one:
+   ^
+  ^ ^
+ (o  )
+(o  o )
+   U
+
+The field is delimited with the symbol `#`.
+The program handles perspective, showing trees "at the bottom" in front of the other trees.
 """
 
 import math
