@@ -2,7 +2,7 @@
 """
 Xmas field of trees.
 
-A short program that generates a field WIDTH a random numbers of pretty trees, just like this one:
+A short program that generates a field with a random numbers of pretty trees, just like this one:
    ^
   ^ ^
  (o  )
