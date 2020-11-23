@@ -32,19 +32,23 @@ MINIMUM_TREES = 1
 BORDER_CHAR = "#"
 EMPTY_CHAR = " "
 TREE_DESIGN = ["^", "^ ^", "(o  )", "(o  o )", "U"]
+# empiric factor to reduce tree spawn occurrence
+TREE_OCCURRENCE_FACTOR = 0.25
 
 
 def main():
-    # initialization
     # create field with borders
     field = [
         [BORDER_CHAR if (x in X_LIMITS or y in Y_LIMITS) else EMPTY_CHAR for x in range(WIDTH)]
         for y in range(HEIGHT)
     ]
 
-    # empiric max number of trees for the sake of visibility
-    # WIDTH and HEIGHT sizes contribute to the number of trees
-    max_tree_for_field = math.ceil((WIDTH * HEIGHT) ** (1 / 2) / 4)
+    # Empiric max number of trees for the sake of visibility.
+    # My goal was to have a dynamic approach for having "enough" trees to demonstrate perspective
+    # but also to have "enough" probability to see a clean field with few trees.
+    # Thus, both WIDTH and HEIGHT sizes contribute to the maximum number of trees, multiplied by
+    # a coefficient TREE_OCCURRENCE_FACTOR to reduce the spawn occurrence of trees.
+    max_tree_for_field = int((WIDTH + HEIGHT) * TREE_OCCURRENCE_FACTOR)
     number_trees = random.randint(MINIMUM_TREES, max_tree_for_field)
 
     # get number_trees random positions in the field (excluded the border protection area)
