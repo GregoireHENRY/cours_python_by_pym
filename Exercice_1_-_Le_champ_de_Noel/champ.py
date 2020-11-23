@@ -44,22 +44,15 @@ def main():
     # WIDTH and HEIGHT sizes contribute to the number of trees
     max_tree_for_field = math.ceil((WIDTH * HEIGHT) ** (1 / 2) / 4)
     number_trees = random.randint(MINIMUM_TREES, max_tree_for_field)
-    # list of coordinates as tuple (x, y) to plant trees
-    tree_positions = list(
-        zip(
-            random.sample(
-                range(PROTECTION_SPAWN_LEFT, WIDTH - PROTECTION_SPAWN_RIGHT), number_trees
-            ),
-            random.sample(
-                range(PROTECTION_SPAWN_BOTTOM, HEIGHT - PROTECTION_SPAWN_TOP), number_trees
-            ),
-        )
-    )
-    # sort tree positions by height for overlapping perspective
-    tree_positions = sorted(tree_positions, key=itemgetter(1))
 
-    # plant trees
-    for position_x, position_y in tree_positions:
+    # get number_trees random positions in the field (excluded the border protection area)
+    # list of y positions are sorted to handle perspective by planting them from top to bottom
+    tree_positions_x = random.sample(range(*PLANTABLE_REGION_LIMITS_HORIZONTAL), number_trees)
+    tree_positions_y = sorted(random.sample(range(*PLANTABLE_REGION_LIMTIS_VERTICAL), number_trees))
+
+    # plant trees from top to bottom
+    for position_x, position_y in zip(tree_positions_x, tree_positions_y):
+        # plant each tree from truc to crown
         for index_line, tree_line in enumerate(TREE_DESIGN[::-1]):
             half_width_tree = int(len(tree_line) / 2)
             # replace field symbols at current field line from -half_width_tree to
