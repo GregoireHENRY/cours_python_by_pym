@@ -13,9 +13,7 @@ The field is delimited with the symbol `#`.
 The program handles perspective, showing trees "at the bottom" in front of the other trees.
 """
 
-import math
 import random
-from operator import itemgetter
 
 # minimum WIDTH and HEIGHT of 12 is adviced
 WIDTH = 20
