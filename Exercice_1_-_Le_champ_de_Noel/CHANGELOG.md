@@ -8,11 +8,34 @@ All notable changes to this project will be documented in this file.
 + add more tree design
 + input fixed size as parameters
 
+## 0.3 - 2020-11-23
+
+### Fixed
+
++ module docstring typo
+
+### Removed
+
++ unused math and iterator imports
+
+### Changed
+
++ list comprehension indexed iterators
++ max number of trees formula, simpler now
++ method to get tree random positions, only sort list of y positions
++ planting for loop in accordance to previous point
++ random range call
+
+### Added
+
++ more comments
+
+
 ## 0.2 - 2020-11-22
 
 ### Fixed
 
-+ Tree position ordering was not saved, thus persepective was not rendered properly
++ tree position ordering was not saved, thus persepective was not rendered properly
 
 ### Changed
 
