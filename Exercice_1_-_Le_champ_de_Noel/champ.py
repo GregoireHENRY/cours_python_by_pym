@@ -34,10 +34,10 @@ TREE_DESIGN = ["^", "^ ^", "(o  )", "(o  o )", "U"]
 
 def main():
     # initialization
-    # create field with BORDERS
+    # create field with borders
     field = [
-        [BORDER_CHAR if (j in X_LIMITS or i in Y_LIMITS) else EMPTY_CHAR for j in range(WIDTH)]
-        for i in range(HEIGHT)
+        [BORDER_CHAR if (x in X_LIMITS or y in Y_LIMITS) else EMPTY_CHAR for x in range(WIDTH)]
+        for y in range(HEIGHT)
     ]
 
     # empiric max number of trees for the sake of visibility
