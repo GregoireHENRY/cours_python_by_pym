@@ -8,6 +8,17 @@ All notable changes to this project will be documented in this file.
 + add more tree design
 + input fixed size as parameters
 
+## 0.4 - 2020-12-02
+
+### Changed
+
++ formula of max number of trees, now depends on field and tree surfaces and occupation rate coefficient
++ case for constants into capital
+
+### Added
+
++ comments detailing the formula of maximum number of trees
+
 ## 0.3 - 2020-11-23
 
 ### Fixed
@@ -29,7 +40,6 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 + more comments
-
 
 ## 0.2 - 2020-11-22
 
