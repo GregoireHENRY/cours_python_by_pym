@@ -4,6 +4,7 @@ Solution de l'exercice 2 tel que définit dans
 [l'énoncé de l'exercice 2](README.md).
 """
 
+import collections
 import string
 from typing import Dict
 
@@ -63,9 +64,13 @@ def exercise_2_1() -> None:
     print("Did it worked?", "OK :)" if SUCCESS else "Nope :(")
 
 
-def letter_frequency(cypher_text: str) -> Dict[str, int]:
-    # Met ton code ici
-    return {}
+def get_letter_occurences(CYPHER_TEXT: str) -> Dict[str, int]:
+    """Get occurences for each letters, ignoring characters not in the upper cased alphabet."""
+    return dict(
+        (LETTER, OCCURRENCE)
+        for (LETTER, OCCURRENCE) in collections.Counter(CYPHER_TEXT).items()
+        if LETTER in string.ascii_uppercase
+    )
 
 
 def crack_key(cypher_text: str) -> int:
