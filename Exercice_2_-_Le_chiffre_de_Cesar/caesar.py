@@ -17,8 +17,7 @@ def shift(CONTAINER: str, AMOUNT: int) -> str:
     return CONTAINER[NEW_START:] + CONTAINER[:NEW_START]
 
 
-def do_cipher(PLAIN_TEXT: str, KEY: int) -> str:
-
+def do_cipher(plain_text: str, key: int) -> str:
     """
     Cipher plain text from caesar encryption key.
     Treat insensitive-case input plain text and output ciphered text upper cased.

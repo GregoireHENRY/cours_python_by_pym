@@ -73,4 +73,3 @@ All notable changes to this project will be documented in this file.
 + return value to the cipher function
 + return value to the decipher function
 + test improvement suggestion
-
