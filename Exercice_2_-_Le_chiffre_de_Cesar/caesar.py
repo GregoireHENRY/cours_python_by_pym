@@ -4,20 +4,42 @@ Solution de l'exercice 2 tel que définit dans
 [l'énoncé de l'exercice 2](README.md).
 """
 
+import string
 from typing import Dict
 
 
-def do_cipher(plain_text: str, key: int) -> str:
-    # Met ton code ici
-    return "Il faudrait retourner un vrai truc ;)"
+def shift(CONTAINER: str, AMOUNT: int) -> str:
+    """Shift container by amount (put back at the start outside shifted elements from the end)."""
+    NEW_START = AMOUNT % len(CONTAINER)
+    return CONTAINER[NEW_START:] + CONTAINER[:NEW_START]
 
 
-def do_decipher(cipher_text: str, key: int) -> str:
-    # Met ton code ici
-    return "Il faudrait retourner un vrai truc ;)"
+def do_cipher(PLAIN_TEXT: str, KEY: int) -> str:
+
+    """
+    Cipher plain text from caesar encryption key.
+    Treat insensitive-case input plain text and output ciphered text upper cased.
+    """
+    plain_text_upper = PLAIN_TEXT.upper()
+    # create intermediate cipher alphabet shifted with key
+    CIPHER_ALBAPHET_UPPER = shift(string.ascii_uppercase, -KEY)
+    # Translation table that map classic alphabet to cipher alphabet shifted with the key. In the
+    # case of characters that are not in plain alphabet, they remain unchanged, such as spaces.
+    TRANSLATION_TABLE = plain_text_upper.maketrans(string.ascii_uppercase, CIPHER_ALBAPHET_UPPER)
+    # apply translation
+    return plain_text_upper.translate(TRANSLATION_TABLE)
 
 
-def exercise_2_1():
+def do_decipher(CIPHER_TEXT: str, KEY: int) -> str:
+    """
+    Decipher encrypted text from caesar encryption key.
+    Operations are symmetric to do_cipher, thus we call it with opposed key.
+    """
+    return do_cipher(CIPHER_TEXT, -KEY)
+
+
+def exercise_2_1() -> None:
+    """PYM git course: exercice 2.1 - Cipher and decipher from a caesar encryption key"""
     PLAIN_TEXT = "Ave Caesar morituri te salutant"
     KEY = 3
 
@@ -51,18 +73,23 @@ def crack_key(cypher_text: str) -> int:
     return 0
 
 
-def exercise_2_2():
-    INTERCEPTED_TEXT = "KPIVKM L'MABIQVO : "
-    "RMCVM LMUWVMBBM, MTTM I CVM IXXIZMVKM PCUIQVM, UIQA LWBMM "
-    "LM LMCF XMBQBMA KWZVMA ACZ TM NZWVB MB LM LMCF IQTMA LMUWVQIYCMA, "
-    "BGXM KPICDM-AWCZQA, LIVA TM LWA. UITOZM AMA IQTMA, MTTM VM AIQB YCM "
-    "XTIVMZ. LCZIVB TMCZA WXMZIBQWVA, MTTM I XWCZ VWU LM KWLM JTIKSJQZL."
+def exercise_2_2() -> None:
+    """PYM git course: exercice 2.2 - Decrypt from an unknown caesar encryption key"""
+    INTERCEPTED_TEXT = (
+        "KPIVKM L'MABIQVO : "
+        "RMCVM LMUWVMBBM, MTTM I CVM IXXIZMVKM PCUIQVM, UIQA LWBMM "
+        "LM LMCF XMBQBMA KWZVMA ACZ TM NZWVB MB LM LMCF IQTMA LMUWVQIYCMA, "
+        "BGXM KPICDM-AWCZQA, LIVA TM LWA. UITOZM AMA IQTMA, MTTM VM AIQB YCM "
+        "XTIVMZ. LCZIVB TMCZA WXMZIBQWVA, MTTM I XWCZ VWU LM KWLM JTIKSJQZL."
+    )
 
-    EXPECTED_TEXT = "Chance d'Estaing : "
-    "Jeune demonette, elle a une apparence humaine, mais dotee "
-    "de deux petites cornes sur le front et de deux ailes demoniaques, "
-    "type chauve-souris, dans le dos. Malgre ses ailes, elle ne sait que "
-    "planer. Durant leurs operations, elle a pour nom de code Blackbird."
+    EXPECTED_TEXT = (
+        "Chance d'Estaing : "
+        "Jeune demonette, elle a une apparence humaine, mais dotee "
+        "de deux petites cornes sur le front et de deux ailes demoniaques, "
+        "type chauve-souris, dans le dos. Malgre ses ailes, elle ne sait que "
+        "planer. Durant leurs operations, elle a pour nom de code Blackbird."
+    )
 
     print("************* Exercise  2.2 *************\n\n")
     print("****** Let's break Caesar's cypher ******\n\n")
@@ -85,7 +112,7 @@ def exercise_2_2():
     print("Did it worked?", "OK :)" if SUCCESS else "Nope :(")
 
 
-def main():
+def main() -> None:
     exercise_2_1()
 
     print()
