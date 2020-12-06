@@ -8,6 +8,8 @@ import collections
 import string
 from typing import Dict
 
+MOST_OCCURRENCE_GUESS = "E"
+
 
 def shift(CONTAINER: str, AMOUNT: int) -> str:
     """Shift container by amount (put back at the start outside shifted elements from the end)."""
@@ -73,9 +75,15 @@ def get_letter_occurences(CYPHER_TEXT: str) -> Dict[str, int]:
     )
 
 
-def crack_key(cypher_text: str) -> int:
-    # Met ton code ici
-    return 0
+def crack_key(CYPHER_TEXT: str) -> int:
+    """
+    The key to decrypt the text is the distance from the unicode code point of the educated guess
+    on the most probable most occurred letter of the context and the unicode code point of the most
+    occurred letter of the text.
+    """
+    LETTER_OCCURRENCES = get_letter_occurences(CYPHER_TEXT)
+    MOST_OCCURRENCE = max(LETTER_OCCURRENCES, key=lambda k: LETTER_OCCURRENCES[k])
+    return ord(MOST_OCCURRENCE_GUESS) - ord(MOST_OCCURRENCE)
 
 
 def exercise_2_2() -> None:
