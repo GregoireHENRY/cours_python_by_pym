@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#!/usr/bin/env python3
 """
 Solution de l'exercice 2 tel que définit dans
 [l'énoncé de l'exercice 2](README.md).
